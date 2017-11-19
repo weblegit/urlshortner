@@ -1,0 +1,77 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+apply plugin: 'war'
+
+
+jar {
+	baseName = 'urlshortner'
+	version = '1.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+	compile('org.springframework.boot:spring-boot-devtools')
+	compile('javax.servlet:jstl')
+	compile('commons-lang:commons-lang:2.6')	
+	compile('org.slf4j:slf4j-api:1.7.5')
+	compile('org.slf4j:jcl-over-slf4j:1.7.7')
+	compile('org.apache.httpcomponents:httpclient:4.5.2')
+  	compile('com.amazonaws:aws-java-sdk-core:1.11.179')
+  	compile('com.amazonaws:aws-java-sdk-s3:1.11.179')
+  	compile('com.fasterxml.jackson.core:jackson-databind:2.9.0')
+  	compile('com.fasterxml.jackson.core:jackson-core:2.9.0')
+  	compile('com.fasterxml.jackson.core:jackson-annotations:2.9.0')
+  	compile('io.springfox:springfox-swagger2:2.6.1')
+  	compile('io.springfox:springfox-swagger-ui:2.6.1')
+  	testCompile('org.springframework.boot:spring-boot-starter-test')
+  	testCompile("junit:junit")
+}
+
+springBoot {
+	mainClass = 'com.weblegit.urlshortner.Application'
+	executable = true
+}
+
+jar {
+	manifest {
+		attributes(
+				'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+				'Main-Class': 'com.weblegit.urlshortner.Application'
+		)
+	}
+}
+
+test {
+	ignoreFailures = true
+}
+
+tasks.matching {it instanceof Test}.all {
+	testLogging.events = ["failed", "passed", "skipped"]
+}
+
+

@@ -3,17 +3,17 @@ A simple, scalable and most economical URL Shortener for Web
 
 The Url Shortener is modeled after the existing free tools with extended funtionality to allow the endpoint url to be changed even afterwards.
 This is really helpful in situations like:
-      1. There is new content that you want your users to see with the same URL
-      2. Recalling an email is not that easy but recalling a short link sent in URL is made possible using this.
+1. There is new content that you want your users to see with the same URL
+2. Recalling an email is not that easy but recalling a short link sent in URL is made possible using this.
       
       
 Stack:
-The application is written in Java with Spring boot       
-It uses AWS S3 for storage
+1. The application is written in Java with Spring boot       
+2. It uses AWS S3 for storage
 
 Scalability & Performance:
-Scalablity and Performance is directly derrived from AWS S3
-The S3 bucket could be fronted by Cloudfront for better performance
+1. Scalablity and Performance is directly derrived from AWS S3
+2. The S3 bucket could be fronted by Cloudfront for better performance
 
 Cost:
 Couple of $$ at the most for regular use cases

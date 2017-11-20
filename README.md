@@ -16,12 +16,12 @@ Scalability & Performance:
 2. The S3 bucket could be fronted by Cloudfront for better performance
 
 Cost:
-Couple of $$ at the most for regular use cases
+Couple of $$ at the most for regular use cases. The redirect requests hit the S3 bucket directly. This application can be easily converted to lambda function to make it serverless.
 
 
 
 Pre-requisite:
-1.Install gradle (if you do not have it already)
+1. Install gradle (if you do not have it already)
 2. Install Java SDK (minimum Java 8)(if you do not have it already)
 3. Aws Account, create one if you do not have it already 
 
